@@ -159,6 +159,32 @@ sget.concat({
   // handle the response
 })
 ```
+### [axios](https://github.com/axios/axios)
+
+```js
+axios.get(
+    'http://localhost:9200', 
+    {
+        httpsAgent: new HttpsProxyAgent({
+            keepAlive: true,
+            keepAliveMsecs: 1000,
+            maxSockets: 256,
+            maxFreeSockets: 256,
+            proxy: 'http://localhost:8080'
+        })
+    }
+)
+.then(
+    res => console.log(res.data)
+)
+.catch(
+    e => console.log(e)
+)
+.finally(
+    () => console.log('Request through proxy completed')
+
+);
+```
 
 ## License
 
